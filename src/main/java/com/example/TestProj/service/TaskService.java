@@ -8,5 +8,5 @@ public interface TaskService {
 
     List<Task> getTasks();
     void addTask(Task task);
-    void completeTask(Task task);
+    void completeTask(Long id);
 }

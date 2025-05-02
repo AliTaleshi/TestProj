@@ -37,11 +37,12 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public void completeTask(Task task) {
-        if (task.getId() == null) {
-            throw new IllegalArgumentException("Task id is null");
+    public void completeTask(Long taskId) {
+        if (taskRepository.findById(taskId).isEmpty()) {
+            throw new IllegalArgumentException("No Task found with id: " + taskId);
         }
 
+        Task task = taskRepository.findById(taskId).get();
         task.setCompleted(true);
         taskRepository.save(task);
         log.info("Task completed with id: " + task.getId());
