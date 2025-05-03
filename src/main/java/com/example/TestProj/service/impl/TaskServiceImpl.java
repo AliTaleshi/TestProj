@@ -1,7 +1,8 @@
-package com.example.TestProj.service;
+package com.example.TestProj.service.impl;
 
 import com.example.TestProj.entity.Task;
 import com.example.TestProj.repository.TaskRepository;
+import com.example.TestProj.service.TaskService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
