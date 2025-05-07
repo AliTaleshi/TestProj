@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/tasks")
 @Slf4j
 public class TaskController {
     private final TaskService taskService;
@@ -17,17 +18,17 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping("/tasks")
+    @GetMapping
     public List<Task> getTasks() {
         return taskService.getTasks();
     }
 
-    @PostMapping("/tasks")
+    @PostMapping
     public void addTask(@RequestBody Task task) {
         taskService.addTask(task);
     }
 
-    @PutMapping("/tasks/{id}/complete")
+    @PutMapping("/{id}/complete")
     public void completeTask(@PathVariable Long id) {
         taskService.completeTask(id);
     }
