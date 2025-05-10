@@ -45,6 +45,9 @@ public class SecurityConfig {
                         .requestMatchers("/auth/**", "/public/**").permitAll()
                         .anyRequest().authenticated()
                 )
+                .exceptionHandling(exception -> {
+                    exception.accessDeniedHandler(customAccessDeniedHandler());
+                })
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin(form -> form
@@ -66,5 +69,10 @@ public class SecurityConfig {
                 .passwordEncoder(passwordEncoder);
 
         return builder.build();
+    }
+
+    @Bean
+    public CustomAccessDeniedHandler customAccessDeniedHandler() {
+        return new CustomAccessDeniedHandler();
     }
 }

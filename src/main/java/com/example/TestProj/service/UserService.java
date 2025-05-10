@@ -5,4 +5,6 @@ import com.example.TestProj.entity.User;
 
 public interface UserService {
     User registerUser(RegisterRequest request);
+
+    User registerAdmin(RegisterRequest request);
 }

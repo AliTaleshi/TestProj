@@ -37,10 +37,16 @@ public class AuthController {
         this.userService = userService;
     }
 
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
+    @PostMapping("/register/user")
+    public ResponseEntity<?> registerUser(@RequestBody RegisterRequest request) {
         User user = userService.registerUser(request);
         return ResponseEntity.ok("User registered successfully: " + user.getUsername());
+    }
+
+    @PostMapping("/register/admin")
+    public ResponseEntity<?> registerAdmin(@RequestBody RegisterRequest request) {
+        User user = userService.registerAdmin(request);
+        return ResponseEntity.ok("Admin registered successfully: " + user.getUsername());
     }
 
     @PostMapping("/login")
